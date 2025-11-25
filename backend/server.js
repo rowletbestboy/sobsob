@@ -80,7 +80,7 @@ app.use(helmet({
 
 // Enable CORS for your frontend
 const corsOptions = {
-	origin: ['http://127.0.0.1:5500', 'http://localhost:5500', 'http://localhost:4000'],
+	origin: ['http://127.0.0.1:5500', 'http://localhost:5500', 'http://localhost:4000', 'https://sobsob.onrender.com'],
 	credentials: true,
 	methods: ['GET','POST','DELETE','PUT','PATCH','OPTIONS'],
 	allowedHeaders: ['Content-Type','Authorization']
@@ -119,7 +119,7 @@ res.json({ ok: true, message: "Server is running", time: new Date() });
 // Start server after migrations complete
 async function startServer() {
   await runMigrations();
-  const server = app.listen(PORT, 'localhost', () => {
+  const server = app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server running on port ${PORT}`);
   });
 
