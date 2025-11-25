@@ -13,6 +13,7 @@ const notificationRoutes = require('./routes/notifications');
 const profileRoutes = require('./routes/profile');
 const friendRoutes = require('./routes/friends');
 const messageRoutes = require('./routes/messages');
+const debugRoutes = require('./routes/debug');
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -96,6 +97,9 @@ app.use('/uploads', cors(corsOptions), express.static(path.join(__dirname, 'uplo
 
 // Serve frontend
 app.use('/', express.static(path.join(__dirname, '..', 'frontend')));
+
+// Debug routes (temporary)
+app.use('/debug', debugRoutes);
 
 // ------------------------------
 // Routes (after middleware)
