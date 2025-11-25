@@ -25,7 +25,11 @@ const upload = multer({ storage, limits: { fileSize: 10 * 1024 * 1024 } });
 // Helper to prefix local uploads with absolute URL
 function ensureAbsoluteUrl(p) {
   if (!p) return null;
-  return p.startsWith('http') ? p : `http://localhost:4000${p}`;
+  // If already absolute, return as-is.
+  if (p.startsWith('http://') || p.startsWith('https://')) return p;
+  // For local uploads (paths starting with '/'), return the relative path
+  // so the browser will request the resource from the same origin.
+  return p;
 }
 
 // Create likes table if missing (safe to call multiple times)
