@@ -21,6 +21,43 @@ const PORT = process.env.PORT || 4000;
 // Run migrations on startup
 async function runMigrations() {
   try {
+    // Ensure users table exists (required for auth/register/login)
+    await db.query(`CREATE TABLE IF NOT EXISTS users (
+      id SERIAL PRIMARY KEY,
+      name TEXT NOT NULL,
+      email TEXT UNIQUE NOT NULL,
+      password TEXT NOT NULL,
+      profile_pic TEXT,
+      bio TEXT,
+      location TEXT,
+      contact TEXT,
+      created_at TIMESTAMP WITH TIME ZONE DEFAULT now()
+    )`);
+    console.log('Users table ready');
+
+    // Ensure cafes table exists
+    await db.query(`CREATE TABLE IF NOT EXISTS cafes (
+      id SERIAL PRIMARY KEY,
+      name TEXT NOT NULL,
+      description TEXT,
+      address TEXT,
+      latitude DOUBLE PRECISION,
+      longitude DOUBLE PRECISION,
+      created_at TIMESTAMP WITH TIME ZONE DEFAULT now()
+    )`);
+    console.log('Cafes table ready');
+
+    // Ensure reviews table exists
+    await db.query(`CREATE TABLE IF NOT EXISTS reviews (
+      id SERIAL PRIMARY KEY,
+      cafe_id INTEGER NOT NULL REFERENCES cafes(id) ON DELETE CASCADE,
+      user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+      rating INTEGER,
+      comment TEXT,
+      created_at TIMESTAMP WITH TIME ZONE DEFAULT now()
+    )`);
+    console.log('Reviews table ready');
+
     // If there is a migrations.sql file, run it first to create base tables
     const fs = require('fs');
     const migrationsPath = path.join(__dirname, 'migrations.sql');
