@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - Sips of Borongan</title>
+  <link rel="stylesheet" href="/frontend/assets/css/main.css">
+</head>
+<body>
+
+  <div class="register-page">
+    <!-- Left Info Panel -->
+    <div class="register-left">
+      <div class="logo-container">
+        <img src="/frontend/assets/img/logo1.png" alt="Sips Logo">
+        <h1>Sips of Borongan</h1>
+      </div>
+      <p>Join our community today and discover amazing local cafes, connect with fellow coffee lovers, and share your favorite brews!</p>
+    </div>
+
+    <!-- Right Form Panel -->
+    <div class="register-right">
+      <div class="auth-box">
+        <h1>Create Account</h1>
+      <form id="registerForm">
+         <input type="text" placeholder="Full Name" id="name" name="name" required>
+          <input type="email" placeholder="Email Address" id="email" name="email" required>
+          <input type="password" placeholder="Password" id="password" name="password" required>
+          <button type="submit">Register</button>
+      </form>
+
+        <p>Already have an account? <a href="/frontend/views/login.html">Login here</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="/frontend/assets/js/register.js"></script>
+
+</body>
+</html>

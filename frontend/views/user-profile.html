@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile - Sips of Borongan</title>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/cafe.css">
+  <style>
+    .user-profile-container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    .user-profile-header {
+      background: linear-gradient(135deg, #ff7f50, #ff6347);
+      color: white;
+      padding: 40px;
+      border-radius: 12px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .user-profile-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 4px solid white;
+      object-fit: cover;
+      margin-bottom: 15px;
+      background: #f0f0f0;
+    }
+    .user-profile-name {
+      font-size: 28px;
+      font-weight: 600;
+      margin: 15px 0;
+    }
+    .user-profile-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-bottom: 30px;
+      font-size: 14px;
+    }
+    .user-profile-info-item {
+      padding: 10px;
+      background: #f9f9f9;
+      border-radius: 6px;
+      border-left: 3px solid #ff7f50;
+    }
+    .user-profile-info-label {
+      font-weight: 600;
+      color: #666;
+      margin-bottom: 3px;
+    }
+    .user-profile-info-value {
+      color: #333;
+    }
+    .user-profile-actions {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+    .btn-add-friend {
+      background: #ff7f50;
+      color: white;
+      padding: 10px 30px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    .btn-add-friend:hover {
+      background: #ff6347;
+      transform: scale(1.05);
+    }
+    .btn-add-friend.added {
+      background: #28a745;
+    }
+    .btn-add-friend:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .user-reviews-section h2 {
+      margin: 40px 0 20px 0;
+      color: #333;
+      border-bottom: 2px solid #ff7f50;
+      padding-bottom: 10px;
+    }
+    .user-reviews-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .user-review-card {
+      background: white;
+      border: 1px solid #ddd;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .user-review-card .review-cafe-name {
+      font-weight: 600;
+      color: #ff7f50;
+      margin-bottom: 5px;
+    }
+    .user-review-card .review-date {
+      font-size: 12px;
+      color: #999;
+      margin-bottom: 10px;
+    }
+    .user-review-card .review-rating {
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+    .user-review-card .review-text {
+      color: #333;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    .user-review-card .review-photos {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .user-review-card .review-photos img {
+      max-width: 200px;
+      height: auto;
+      border-radius: 6px;
+    }
+    .user-review-card .review-like-btn {
+      padding: 6px 12px;
+      background: #f0f0f0;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+    .user-review-card .review-like-btn:hover {
+      background: #ffe0cc;
+    }
+    .user-review-card .review-like-btn.liked {
+      background: #ffcccc;
+      color: #ff6347;
+    }
+    .loading-spinner {
+      text-align: center;
+      padding: 40px;
+      font-size: 18px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <img src="/frontend/assets/img/logo1.png" class="nav-logo" alt="Sips Logo">
+      <h2>Sips of Borongan</h2>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="/frontend/views/dashboard.html"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 11.5L12 4l9 7.5" stroke="#333" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Home</a></li>
+      <li><a href="/frontend/views/messages.html"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="#333" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Messages</a></li>
+      <li><a href="/frontend/views/notifications.html"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 17H9a3 3 0 0 1-3-3V9a6 6 0 1 1 12 0v5a3 3 0 0 1-3 3z" stroke="#333" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Notifications</a></li>
+      <li><a href="/frontend/views/profile.html"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="#333" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="7" r="4" stroke="#333" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Profile</a></li>
+      <li><a href="#" id="logoutBtn" class="logout-btn"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 17l5-5-5-5" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 12H9" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Logout</a></li>
+    </ul>
+  </nav>
+
+  <div class="user-profile-container">
+    <div class="loading-spinner">Loading user profile...</div>
+
+    <div id="profileContent" style="display: none;">
+      <!-- Profile Header -->
+      <div class="user-profile-header">
+        <img id="userAvatar" src="" alt="User Avatar" class="user-profile-avatar">
+        <div class="user-profile-name" id="userName">User Name</div>
+        <p id="userBio" style="margin: 10px 0; font-size: 14px; opacity: 0.9;"></p>
+      </div>
+
+      <!-- Profile Info & Actions -->
+      <div class="user-profile-info">
+        <div class="user-profile-info-item">
+          <div class="user-profile-info-label">Email</div>
+          <div class="user-profile-info-value" id="userEmail">—</div>
+        </div>
+        <div class="user-profile-info-item">
+          <div class="user-profile-info-label">Location</div>
+          <div class="user-profile-info-value" id="userLocation">—</div>
+        </div>
+        <div class="user-profile-info-item">
+          <div class="user-profile-info-label">Contact</div>
+          <div class="user-profile-info-value" id="userContact">—</div>
+        </div>
+      </div>
+
+      <!-- Action Button -->
+      <div class="user-profile-actions">
+        <button id="addFriendBtn" class="btn-add-friend">Add Friend</button>
+      </div>
+
+      <!-- Reviews Section -->
+      <div class="user-reviews-section">
+        <h2>Reviews</h2>
+        <div id="userReviewsList" class="user-reviews-list">
+          <p>No reviews yet.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer"></div>
+  <script src="/frontend/components/footer.js"></script>
+  <script src="/frontend/assets/js/user-profile.js"></script>
+
+</body>
+</html>

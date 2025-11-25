@@ -1,0 +1,176 @@
+/* === Color Variables & Fonts === */
+@import url('[https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Lora:wght@400;700&display=swap](https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Lora:wght@400;700&display=swap)');
+
+:root {
+--primary-accent: #ff914d;
+--secondary-accent: #d96c00;
+--dark-bg: #656056;
+--dark-card: #804c29;
+--light-text: #f5f5f5;
+--muted-text: #aaa;
+--heading-font: 'Playfair Display', serif;
+--body-font: 'Lora', serif;
+}
+
+/* === Reset & Base === */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--body-font);
+  }
+
+body, html {
+width: 100%;
+height: 100%;
+background: var(--dark-bg);
+color: var(--light-text);
+}
+
+/* === Navbar === */
+.navbar {
+width: 100%;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 1rem 3rem;
+background: #222;
+box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+position: sticky;
+top: 0;
+z-index: 20;
+}
+
+.logo {
+font-size: 1.5rem;
+font-family: var(--heading-font);
+color: var(--primary-accent);
+font-weight: 700;
+}
+
+.nav-links a {
+text-decoration: none;
+margin-left: 1.5rem;
+font-weight: 600;
+color: var(--light-text);
+transition: 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links .active {
+color: var(--primary-accent);
+}
+
+/* === Hero Section === */
+.hero-section {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+min-height: 80vh;
+max-width: 900px;
+margin: 4rem auto;
+text-align: center;
+padding: 2rem;
+position: relative;
+background: var(--dark-card);
+border-radius: 1rem;
+box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+overflow: hidden;
+}
+
+/* Coffee texture overlay */
+.hero-section::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: url('[https://www.transparenttextures.com/patterns/coffee.png](https://www.transparenttextures.com/patterns/coffee.png)') repeat;
+opacity: 0.05;
+z-index: 0;
+}
+
+/* Hero Text */
+.hero-section h1 {
+font-family: var(--heading-font);
+font-weight: 700;
+font-size: 1.8rem;
+margin-bottom: 1rem;
+line-height: 1.3;
+color: var(--primary-accent);
+position: relative;
+z-index: 1;
+}
+
+.hero-section p {
+font-size: 1rem;
+color: var(--muted-text);
+margin-bottom: 2rem;
+max-width: 500px;
+line-height: 1.5;
+position: relative;
+z-index: 1;
+}
+
+/* Hero Button Container */
+.hero-buttons {
+display: flex;
+gap: 1rem;
+flex-wrap: wrap;
+justify-content: center;
+background: rgba(0,0,0,0.2);
+padding: 1rem 2rem;
+border-radius: 0.8rem;
+box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+position: relative;
+z-index: 1;
+}
+
+.hero-buttons a {
+padding: 0.7rem 1.8rem;
+font-weight: 600;
+border-radius: 0.6rem;
+text-decoration: none;
+color: #fff;
+background: var(--primary-accent);
+transition: all 0.3s ease;
+}
+
+.hero-buttons a:hover {
+background: var(--secondary-accent);
+transform: translateY(-2px);
+box-shadow: 0 6px 16px rgba(0,0,0,0.6);
+}
+
+/* === Subtle Background Circles === */
+.hero-section::after {
+content: '';
+position: absolute;
+border-radius: 50%;
+z-index: 0;
+width: 120px;
+height: 120px;
+bottom: -30px;
+right: -30px;
+background: rgba(217,108,0,0.08);
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+.hero-section h1 {
+font-size: 1.5rem;
+}
+.hero-section p {
+font-size: 0.95rem;
+}
+.hero-buttons {
+padding: 0.5rem 1rem;
+}
+.hero-buttons a {
+width: 80%;
+text-align: center;
+}
+}

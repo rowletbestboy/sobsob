@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Café Page</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/cafe.css">
+
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <img src="/frontend/assets/img/logo1.png" class="nav-logo" alt="Sips Logo">
+      <h2>Sips of Borongan</h2>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="/frontend/views/index.html"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 11.5L12 4l9 7.5" stroke="#333" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Home</a></li>
+      <li><a href="/frontend/views/messages.html"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="#333" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Messages</a></li>
+      <li><a href="/frontend/views/notifications.html"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 17H9a3 3 0 0 1-3-3V9a6 6 0 1 1 12 0v5a3 3 0 0 1-3 3z" stroke="#333" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Notifications</a></li>
+      <li><a href="/frontend/views/profile.html"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="#333" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="7" r="4" stroke="#333" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Profile</a></li>
+      <li><a href="#" id="logoutBtn" class="logout-btn"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 17l5-5-5-5" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 12H9" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Logout</a></li>
+    </ul>
+  </nav>
+
+  <!-- MAIN WRAPPER -->
+  <div class="cafe-container">
+
+    <!-- SLIDESHOW -->
+    <div class="slideshow-wrapper" id="slideshow-container">
+      <img id="slideshow" class="slide-img" src="" alt="Café slideshow">
+    </div>
+
+    <!-- CAFE TITLE -->
+    <h2 class="cafe-title"></h2>
+
+    <!-- CAFE INFO -->
+    <div class="cafe-info">
+      <h1 id="cafeName">Cafe Name</h1>
+      <p id="cafeDescription">Cafe description goes here…</p>
+      <p><strong>Location:</strong> <span id="cafeLocation"></span></p>
+    </div>
+
+    <!-- REVIEW SECTION -->
+    <div class="review-box">
+      <h2>Leave a Review</h2>
+      <textarea id="reviewText" placeholder="Share your experience…"></textarea>
+
+      <!-- Rating -->
+      <div id="starRating">
+        <span class="star" data-value="1">☆</span>
+        <span class="star" data-value="2">☆</span>
+        <span class="star" data-value="3">☆</span>
+        <span class="star" data-value="4">☆</span>
+        <span class="star" data-value="5">☆</span>
+      </div>
+
+      <!-- Hidden input to store selected rating -->
+      <input type="hidden" id="rating" value="0">
+
+      <!-- Image upload -->
+      <input type="file" id="photoInput" accept="image/*" multiple>
+      <div id="previewContainer"></div>
+
+      <button id="postBtn">Post Review</button>
+    </div>
+
+    <!-- POSTS -->
+    <div id="postsContainer"></div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    &copy; 2025 Sips of Borongan — All Rights Reserved
+  </footer>
+
+  <!-- JS -->
+  <script type="module" src="../assets/js/cafe.js"></script>
+
+</body>
+</html>

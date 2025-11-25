@@ -1,0 +1,280 @@
+/* ------------------------------------
+GLOBAL STYLES
+------------------------------------ */
+body {
+font-family: "Poppins", sans-serif;
+background: #faf7f2;
+margin: 0;
+padding: 0;
+color: #333;
+}
+
+a {
+text-decoration: none;
+color: inherit;
+}
+
+/* ------------------------------------
+NAV BAR
+------------------------------------ */
+nav {
+background: #d67b28;
+padding: 15px 30px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+color: white;
+}
+
+nav h2 {
+margin: 0;
+font-size: 22px;
+}
+
+nav button {
+background: white;
+color: #d67b28;
+padding: 8px 14px;
+border-radius: 8px;
+border: none;
+cursor: pointer;
+font-weight: 600;
+}
+
+/* ------------------------------------
+PAGE WRAPPER
+------------------------------------ */
+.cafe-container {
+width: 90%;
+max-width: 1100px;
+margin: 30px auto;
+}
+
+/* ------------------------------------
+SLIDESHOW
+------------------------------------ */
+.slideshow-wrapper {
+position: relative;
+width: 100%;
+height: 380px;
+border-radius: 18px;
+overflow: hidden;
+box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+background: #111;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.slide-img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+border-radius: 18px;
+animation: fadeIn 0.6s ease-in-out;
+transition: opacity 0.6s ease-in-out;
+}
+
+/* Slide arrows */
+.slide-arrow {
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+background: rgba(214,123,40,0.8);
+color: #fff;
+border: none;
+font-size: 30px;
+padding: 8px 14px;
+border-radius: 50%;
+cursor: pointer;
+transition: 0.3s;
+z-index: 10;
+}
+
+.slide-arrow:hover {
+background: rgba(214,123,40,1);
+}
+
+.slide-arrow.left {
+left: 15px;
+}
+
+.slide-arrow.right {
+right: 15px;
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+from { opacity: 0; }
+to { opacity: 1; }
+}
+
+/* ------------------------------------
+CAFE INFO
+------------------------------------ */
+.cafe-info {
+margin-top: 25px;
+background: white;
+padding: 25px;
+border-radius: 16px;
+box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.cafe-info h1 {
+margin-top: 0;
+font-size: 28px;
+color: #d67b28;
+}
+
+.cafe-info p {
+margin: 8px 0;
+line-height: 1.6;
+color: #444;
+}
+
+/* ------------------------------------
+REVIEW FORM
+------------------------------------ */
+.review-box {
+margin-top: 35px;
+background: white;
+padding: 25px;
+border-radius: 16px;
+box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.review-box h2 {
+margin-top: 0;
+color: #d67b28;
+}
+
+textarea {
+width: 100%;
+border-radius: 10px;
+padding: 12px;
+border: 1px solid #ddd;
+resize: none;
+height: 120px;
+font-family: inherit;
+}
+
+#starRating {
+margin: 10px 0;
+font-size: 26px;
+cursor: pointer;
+}
+
+.star {
+color: #d67b28;
+}
+
+#photoInput {
+margin-top: 10px;
+}
+
+.preview-img {
+width: 160px;
+margin-top: 15px;
+border-radius: 10px;
+display: block;
+}
+
+#postBtn {
+background: #d67b28;
+color: white;
+padding: 10px 18px;
+font-size: 15px;
+border: none;
+border-radius: 10px;
+cursor: pointer;
+display: block;
+margin-top: 12px;
+}
+
+#postBtn:hover {
+background: #b8641f;
+}
+
+/* ------------------------------------
+POSTS
+------------------------------------ */
+.post {
+background: white;
+padding: 20px;
+border-radius: 16px;
+margin-top: 20px;
+box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.post img.post-img {
+width: 100%;
+margin-top: 10px;
+border-radius: 10px;
+}
+
+.post .like-section {
+margin-top: 10px;
+}
+
+.likeBtn {
+background: none;
+border: none;
+font-size: 20px;
+cursor: pointer;
+}
+
+.comment {
+margin-top: 8px;
+padding-left: 10px;
+border-left: 3px solid #d67b28;
+}
+
+.add-comment {
+margin-top: 10px;
+}
+
+.comment-input {
+padding: 8px;
+width: 80%;
+border-radius: 10px;
+border: 1px solid #ccc;
+}
+
+.comment-btn {
+background: #d67b28;
+color: white;
+border: none;
+padding: 8px 14px;
+border-radius: 8px;
+cursor: pointer;
+}
+
+/* ------------------------------------
+FOOTER
+------------------------------------ */
+footer {
+margin-top: 50px;
+background: #d67b28;
+text-align: center;
+padding: 25px;
+color: white;
+font-weight: 500;
+border-radius: 20px 20px 0 0;
+}
+/* -----------------------------
+   Review Image Previews
+----------------------------- */
+#previewContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* space between images */
+    margin-top: 10px;
+}
+
+#previewContainer img.post-img {
+    max-width: 150px;   /* limit width */
+    max-height: 150px;  /* limit height */
+    object-fit: cover;  /* maintain aspect ratio, crop if necessary */
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}

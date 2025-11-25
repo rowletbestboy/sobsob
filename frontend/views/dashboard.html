@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - Sips of Borongan</title>
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="/frontend/assets/css/main.css" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ========================= -->
+  <!-- Navigation -->
+  <!-- ========================= -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <img src="/frontend/assets/img/logo1.png" class="nav-logo" alt="Sips Logo">
+      <h2>Sips of Borongan</h2>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="/frontend/views/dashboard.html" class="active"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 11.5L12 4l9 7.5" stroke="#333" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Home</a></li>
+      <li><a href="/frontend/views/messages.html"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="#333" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Messages</a></li>
+      <li><a href="/frontend/views/notifications.html"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 17H9a3 3 0 0 1-3-3V9a6 6 0 1 1 12 0v5a3 3 0 0 1-3 3z" stroke="#333" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Notifications</a></li>
+      <li><a href="/frontend/views/profile.html"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="#333" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="7" r="4" stroke="#333" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Profile</a></li>
+      <li><a href="#" id="logoutBtn" class="logout-btn"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 17l5-5-5-5" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 12H9" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Logout</a></li>
+    </ul>
+  </nav>
+
+  <!-- ========================= -->
+  <!-- Header Section -->
+  <!-- ========================= -->
+  <header class="dashboard-header">
+    <div class="header-content">
+      <h1>Welcome to Borongan’s Coffee Community</h1>
+      <p>Explore the best local cafés and discover where your next favorite cup is brewed.</p>
+    </div>
+  </header>
+
+  <!-- ========================= -->
+  <!-- Café Grid Section -->
+  <!-- ========================= -->
+  <section class="cafe-section">
+    <h2 class="section-title">Featured Cafés</h2>
+    <div class="cafe-grid" id="cafeGrid">
+      <!-- Populated dynamically by dashboard.js -->
+    </div>
+  </section>
+
+  <!-- ========================= -->
+  <!-- Footer -->
+  <!-- ========================= -->
+  <div id="footer"></div>
+  <script src="/frontend/components/footer.js"></script>
+
+  <!-- Dashboard Logic -->
+  <script src="/frontend/assets/js/dashboard.js"></script>
+
+</body>
+</html>
