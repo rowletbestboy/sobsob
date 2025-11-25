@@ -105,8 +105,14 @@ app.use(express.urlencoded({ extended: true, limit: '15mb' }));
 // Serve uploaded review images with explicit CORS headers
 app.use('/uploads', cors(corsOptions), express.static(path.join(__dirname, 'uploads')));
 
-// Serve frontend
-app.use('/', express.static(path.join(__dirname, '..', 'frontend')));
+// Serve frontend static assets and HTML views
+// Assets (CSS/JS/img) are referenced under `/frontend/...` in the HTML,
+// so mount the full `frontend` folder at `/frontend`.
+app.use('/frontend', express.static(path.join(__dirname, '..', 'frontend')));
+
+// Serve HTML pages from `frontend/views` at the site root so requests
+// like `/`, `/register.html`, `/login.html` return the corresponding view files.
+app.use('/', express.static(path.join(__dirname, '..', 'frontend', 'views')));
 
 // Debug routes (temporary)
 app.use('/debug', debugRoutes);
