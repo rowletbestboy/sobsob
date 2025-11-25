@@ -173,6 +173,30 @@ app.get('/', (req, res) => {
 res.json({ ok: true, message: "Server is running", time: new Date() });
 });
 
+// ------------------------------
+// DB status (runtime diagnostic)
+// ------------------------------
+app.get('/db-status', async (req, res) => {
+  try {
+    // simple server time check
+    const nowRes = await db.query('SELECT now() as now');
+    // count users table if present
+    let usersCount = null;
+    try {
+      const c = await db.query('SELECT COUNT(*)::int as cnt FROM users');
+      usersCount = c.rows[0].cnt;
+    } catch (innerErr) {
+      // table might not exist yet
+      usersCount = null;
+    }
+
+    return res.json({ ok: true, now: nowRes.rows[0].now, users: usersCount });
+  } catch (err) {
+    console.error('db-status error', err);
+    return res.status(500).json({ ok: false, error: String(err.message || err) });
+  }
+});
+
 // Start server after optional migrations
 async function startServer() {
   if (process.env.RUN_MIGRATIONS === 'true') {

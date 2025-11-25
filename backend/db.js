@@ -35,6 +35,25 @@ if (connectionString) {
     console.error('Unexpected error on idle PostgreSQL client', err);
     // don't call process.exit here to keep server running for debugging
   });
+
+  // Try a one-time connection test to surface connection issues early in logs
+  (async () => {
+    try {
+      // Log host/port/ssl info (without printing credentials)
+      try {
+        const u = new URL(connectionString);
+        console.log('Postgres connection host:', u.hostname, 'port:', u.port || '5432');
+        console.log('Postgres connection sslmode:', u.searchParams.get('sslmode') || (process.env.DB_SSL ? 'true' : 'false'));
+      } catch (e) {
+        // ignore URL parse errors
+      }
+
+      const res = await pool.query('SELECT now() as now');
+      console.log('Postgres connection test OK:', res.rows[0].now);
+    } catch (err) {
+      console.error('Initial DB connection test failed:', err);
+    }
+  })();
 }
 
 module.exports = {
