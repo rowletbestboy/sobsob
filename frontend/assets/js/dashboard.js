@@ -28,7 +28,7 @@ function redirectToLogin() {
 // ---------------------
 async function verifySession(token) {
   try {
-    const res = await fetch("https://sob-c30g.onrender.com/api/auth/me", {
+    const res = await fetch("https://sobsob.onrender.com/api/auth/me", {
       headers: { Authorization: `Bearer ${token}` }
     });
 

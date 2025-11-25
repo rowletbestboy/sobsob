@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const token = localStorage.getItem('token');
   if (token) {
     try {
-      const res = await fetch('https://sob-c30g.onrender.com/api/profile', {
+      const res = await fetch('https://sobsob.onrender.com/api/profile', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (res.ok) window.location.href = '/frontend/views/dashboard.html';
@@ -23,7 +23,7 @@ registerForm.addEventListener('submit', async (e) => {
   if (!name || !email || !password) return alert('Please fill in all fields.');
 
   try {
-    const res = await fetch('https://sob-c30g.onrender.com/api/auth/register', {
+    const res = await fetch('https://sobsob.onrender.com/api/auth/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, email, password })

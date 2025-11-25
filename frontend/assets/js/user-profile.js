@@ -1,4 +1,4 @@
-const API_BASE = 'https://sob-c30g.onrender.com/api';
+const API_BASE = 'https://sobsob.onrender.com/api';
 const token = localStorage.getItem('token');
 const currentUser = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
 const currentUserId = currentUser?.id;
@@ -100,7 +100,7 @@ async function loadUserReviews(userId) {
         }
 
         if (Array.isArray(photos) && photos.length > 0) {
-          photos = photos.map(p => p && p.startsWith('http') ? p : `https://sob-c30g.onrender.com${p}`);
+          photos = photos.map(p => p && p.startsWith('http') ? p : `https://sobsob.onrender.com${p}`);
           photosHTML = photos.map(p => `<img src="${p}" alt="Review photo">`).join('');
         }
       }

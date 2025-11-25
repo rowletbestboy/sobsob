@@ -15,7 +15,7 @@ const nextBtn = document.getElementById('nextSlide');
 
 const urlParams = new URLSearchParams(window.location.search);
 const cafeId = urlParams.get('id');
-const API_BASE = 'https://sob-c30g.onrender.com/api';
+const API_BASE = 'https://sobsob.onrender.com/api';
 
 // -----------------------------
 // LOGOUT

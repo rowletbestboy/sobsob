@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!notifLinks.length) return;
 
   const token = localStorage.getItem('token');
-  const API_BASE = 'https://sob-c30g.onrender.com/api';
+  const API_BASE = 'https://sobsob.onrender.com/api';
 
   // Ensure a badge exists on each notifications link
   notifLinks.forEach(link => {

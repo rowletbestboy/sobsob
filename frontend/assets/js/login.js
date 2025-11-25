@@ -1,4 +1,4 @@
-const API_URL = "https://sob-c30g.onrender.com/api/auth";
+const API_URL = "https://sobsob.onrender.com/api/auth";
 
 document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.getElementById("loginForm");

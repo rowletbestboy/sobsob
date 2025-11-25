@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const listEl = document.getElementById('notificationsList');
   const emptyEl = document.getElementById('notificationsEmpty');
-  const API_BASE = 'https://sob-c30g.onrender.com/api';
+  const API_BASE = 'https://sobsob.onrender.com/api';
   const token = localStorage.getItem('token');
 
   console.log('=== NOTIFICATIONS PAGE LOADED ===');

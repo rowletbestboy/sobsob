@@ -1,5 +1,5 @@
 // ======================== CONFIG ======================== //
-const API_URL = "https://sob-c30g.onrender.com/api";
+const API_URL = "https://sobsob.onrender.com/api";
 const token = localStorage.getItem("token");
 
 // Redirect if not logged in
@@ -171,7 +171,7 @@ async function loadReviews() {
 
         if (Array.isArray(photos) && photos.length > 0) {
           // Ensure absolute URLs for images served from backend
-          photos = photos.map(p => p && p.startsWith('http') ? p : `https://sob-c30g.onrender.com${p}`);
+          photos = photos.map(p => p && p.startsWith('http') ? p : `https://sobsob.onrender.com${p}`);
           photosHTML = photos.map(p => `<img src="${p}" class="review-photo" alt="Review photo">`).join("");
         }
       }
@@ -224,7 +224,7 @@ function attachReviewListeners() {
     const reviewId = btn.dataset.id;
     
     // Fetch like count
-    fetch(`https://sob-c30g.onrender.com/api/reviews/${reviewId}/likes`)
+    fetch(`https://sobsob.onrender.com/api/reviews/${reviewId}/likes`)
       .then(res => res.ok ? res.json() : null)
       .then(data => {
         if (data) {
@@ -241,7 +241,7 @@ function attachReviewListeners() {
       
       const isLiked = btn.classList.contains('liked');
       const method = isLiked ? 'DELETE' : 'POST';
-      const url = `https://sob-c30g.onrender.com/api/reviews/${reviewId}/like`;
+      const url = `https://sobsob.onrender.com/api/reviews/${reviewId}/like`;
       
       try {
         const res = await fetch(url, {

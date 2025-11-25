@@ -1,4 +1,4 @@
-const API_BASE = 'https://sob-c30g.onrender.com/api';
+const API_BASE = 'https://sobsob.onrender.com/api';
 const token = localStorage.getItem('token');
 const currentUser = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
 const currentUserId = currentUser?.id;
