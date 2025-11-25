@@ -13,6 +13,25 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
+// ---------- UPLOAD AVATAR ---------- //
+router.put('/avatar', authMiddleware, upload.single('avatar'), async (req, res) => {
+  try {
+    if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
+
+    const publicPath = `/uploads/${req.file.filename}`;
+
+    const result = await db.query(
+      `UPDATE users SET profile_pic = $1 WHERE id = $2 RETURNING id, name, email, profile_pic`,
+      [publicPath, req.user.userId]
+    );
+
+    return res.json({ message: 'Profile picture updated', profile_pic: result.rows[0].profile_pic, user: result.rows[0] });
+  } catch (err) {
+    console.error('avatar upload error', err);
+    return res.status(500).json({ error: 'Server error' });
+  }
+});
+
 
 
 // ---------- GET MY PROFILE ---------- //
@@ -53,7 +72,7 @@ router.get('/reviews', authMiddleware, async (req, res) => {
           photos = Array.isArray(r.photo) ? r.photo : [];
         }
       }
-      photos = photos.map(p => p && p.startsWith('http') ? p : `http://localhost:4000${p}`);
+      photos = photos.map(p => p && (p.startsWith('http://') || p.startsWith('https://')) ? p : p);
       return { ...r, photo: photos };
     });
 
