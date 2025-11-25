@@ -88,6 +88,16 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
+// Temporary raw body debug endpoint (must be before express.json)
+app.post('/raw-debug', (req, res) => {
+  let data = '';
+  req.setEncoding('utf8');
+  req.on('data', chunk => { data += chunk; });
+  req.on('end', () => {
+    res.json({ ok: true, raw: data, headers: req.headers });
+  });
+});
+
 // Allow large JSON payloads (for testing / API use)
 app.use(express.json({ limit: '15mb' }));
 app.use(express.urlencoded({ extended: true, limit: '15mb' }));
