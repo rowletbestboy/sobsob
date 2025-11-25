@@ -120,9 +120,14 @@ app.get('/', (req, res) => {
 res.json({ ok: true, message: "Server is running", time: new Date() });
 });
 
-// Start server after migrations complete
+// Start server after optional migrations
 async function startServer() {
-  await runMigrations();
+  if (process.env.RUN_MIGRATIONS === 'true') {
+    await runMigrations();
+  } else {
+    console.log('Skipping migrations — set RUN_MIGRATIONS=true to enable');
+  }
+
   const server = app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server running on port ${PORT}`);
   });
